@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <a class="btn btn-outline-primary" href="/mahasiswa/create">Add Mahasiswa</a>
+                    <a class="btn btn-outline-primary" href="{{ route('mahasiswa.create') }}">Add Mahasiswa</a>
                     <table class="table table-hover">
                         <tr>
                             <th>No</th>
@@ -29,8 +29,8 @@
                             <td>{{$m->alamat}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a class="btn btn-outline-primary" href="/mahasiswa/{{$m->id}}/edit">Edit</a>
-                                    <form action="/mahasiswa/{{$m->id}}" method="POST">
+                                    <a class="btn btn-outline-primary" href="{{  route('mahasiswa.edit', $m->id) }}">Edit</a>
+                                    <form action="{{  route('mahasiswa.destroy', $m->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <input class="btn btn-outline-primary" type="submit" value="Delete">

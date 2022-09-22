@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MahasiswaController;
+// use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +18,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->group(function(){
+Route::group([
+    'prefix' => 'cok',
+    // 'middleware' => ['']
+], function(){
     
-    Route::get('/mahasiswa',[MahasiswaController::class,'index']);
-    Route::get('/mahasiswa/create',[MahasiswaController::class,'create']);
-    Route::post('/mahasiswa/store',[MahasiswaController::class,'store']);
-    Route::get('/mahasiswa/{id}/edit',[MahasiswaController::class,'edit']);
-    Route::put('/mahasiswa/{id}',[MahasiswaController::class,'update']);
-    Route::delete('/mahasiswa/{id}',[MahasiswaController::class,'destroy']);
+    // Route::get('cok','MahasiswaController@index')->name('mahasiswa.index');
+    // Route::get('cok/create','MahasiswaController@create')->name('mahasiswa.create');
+    // Route::post('cok/store','MahasiswaController@store')->name('mahasiswa.store');
+    // Route::get('cok/{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
+    // Route::put('cok/{id}','MahasiswaController@update')->name('mahasiswa.update');
+    // Route::delete('cok/{id}','MahasiswaController@destroy')->name('mahasiswa.destroy');
+    // Route::resource('mahasiswa', 'MahasiswaController', ['as' => 'admin']);
+    Route::resource('mahasiswa', 'MahasiswaController');
     
+});
+
+Route::group([
+    'prefix' => 'cok',
+    'namespace' => 'Cok'
+], function(){
+    
+        Route::resource('test', 'AsuController');
 });
 
 Auth::routes();
