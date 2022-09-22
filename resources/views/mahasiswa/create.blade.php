@@ -2,6 +2,7 @@
 @section('content')
 <div class="container">
     <h1>ADD MAHASISWA</h1>
+    <h2> Baru </h2>
 
     <form action="{{  route('admin.mahasiswa.store') }}" method="POST">
         @csrf
