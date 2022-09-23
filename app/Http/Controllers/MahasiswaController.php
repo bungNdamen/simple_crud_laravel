@@ -20,8 +20,8 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {   
         //dd($request->all());
-        Mahasiswa::create($request->except(['_token', 'submit']));
-        return redirect('/mahasiswa');
+        Mahasiswa::create($request->except('_token', 'submit'));
+        return redirect()->route('mahasiswa.index');
     }
 
     public function edit($id)
@@ -33,14 +33,14 @@ class MahasiswaController extends Controller
     public function update($id, Request $request)
     {
         $mahasiswa = Mahasiswa::find($id);
-        $mahasiswa->update($request->except(['_token','submit']));
-        return redirect('mahasiswa');
+        $mahasiswa->update($request->except('_token','submit'));
+        return redirect()->route('mahasiswa.index');
     }
 
     public function destroy($id)
     {
         $mahasiswa = Mahasiswa::find($id);
         $mahasiswa->delete();
-        return redirect('/mahasiswa');
+        return redirect()->route('mahasiswa.index');
     }
 }
